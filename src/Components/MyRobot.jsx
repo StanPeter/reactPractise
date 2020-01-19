@@ -1,7 +1,17 @@
 import React from "react";
 import '../App.css';
+import Radium from "radium";
 
 function MyRobot(props) {
+    const style = {
+        backgroundColor: "blue",
+        color: "silver",
+        ":hover": {
+          backgroundColor: "lightblue",
+          color: "white"
+        }
+      };
+
     return (
         <div className="your-robot">
             <h5>Your Robot {props.inputRobotVal}</h5>
@@ -11,9 +21,14 @@ function MyRobot(props) {
                 value={props.inputRobotVal}
                 name="inputRobotVal" 
             />
-            <h6>{props.chosenRobot}</h6>
+            <button 
+                style={style}
+                onClick={props.clickHandlerChange} >
+                change
+            </button>
+            <h6>{props.chosenRobot.name}</h6>
         </div>
     )
 }
 
-export default MyRobot;
+export default Radium(MyRobot);
